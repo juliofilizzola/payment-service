@@ -20,7 +20,7 @@ public class JsonProducerConfig {
   private final KafkaProperties properties;
 
   @Bean
-  public ProducerFactory<String, Object> jsonProducerFactory() {
+  public ProducerFactory jsonProducerFactory() {
     var config = new HashMap<String, Object>();
     config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, properties.getBootstrapServers());
     config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -29,7 +29,7 @@ public class JsonProducerConfig {
   }
 
   @Bean
-  public KafkaTemplate<String, Serializable> jsonKafkaTemplate(ProducerFactory<String, Serializable> jsonProducerFactory) {
+  public KafkaTemplate jsonKafkaTemplate(ProducerFactory<String, Serializable> jsonProducerFactory) {
     return new KafkaTemplate<>(jsonProducerFactory);
   }
 }
