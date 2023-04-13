@@ -25,7 +25,7 @@ public class JsonProducerConfig {
     config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, properties.getBootstrapServers());
     config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
     config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-    return new DefaultKafkaProducerFactory<>(config, new StringSerializer(), new JsonSerializer<>());
+    return new DefaultKafkaProducerFactory<String, Object>(config, new StringSerializer(), new JsonSerializer<>());
   }
 
   @Bean
